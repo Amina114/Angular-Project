@@ -1,0 +1,35 @@
+<h1> Add a new product</h1>
+<form #f="ngForm">
+    <div class="form-group">
+        <label> Title</label>
+        <input type="text" name="title" [(ngModel)]="product.title" class="form-control" required minlength="3" #t="ngModel">
+        <br>
+       <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+       <div *ngIf="t.hasError('required')"> This filed is required</div>
+       <div *ngIf="t.hasError('minlength')"> this minlength is equal to 3</div>
+       </div>
+
+        <label> Price</label>
+        <input type="number" name="price" [(ngModel)]="product.price" class="form-control" #p="ngModel" required>    
+        <br>
+       <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
+       <div> This filed is required</div>
+       </div>
+
+
+        <label> Picture</label>
+        <input type="text" name="Picture" [(ngModel)]="product.picture" class="form-control" #pi="ngModel" required>
+     <br>
+       <div class="alert alert-danger"*ngIf="pi.invalid && pi.touched" >
+       <div> This filed is required</div>
+       </div>
+
+        <label> Quantity</label>
+        <input type="number" name="Quantity"  [(ngModel)]="product.quantity" class="form-control"  #q="ngModel"  required>
+        <br>
+        <div class="alert alert-danger" *ngIf="q.invalid && q.touched">
+        <div> This filed is required</div>
+        </div>
+    </div>
+        <button class="btn btn-success" [disabled]="f.invalid" (click)="save()">save</button>
+</form>
